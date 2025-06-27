@@ -1,7 +1,7 @@
 export default function About() {
   return (
         <div>
-          <h1>Terms & Conditions</h1>
+          <h1>About US - D & S Signs Ltd</h1>
         </div>
       );
 }
