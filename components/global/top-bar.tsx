@@ -16,7 +16,7 @@ export default function Top_Bar(){
                 <h1 className="pl-4 font-semibold">{formattedDate}</h1>
             </div>
             
-            <div className="h-full flex items-center justify-evenly flex-end">
+            <div className="h-full flex items-center justify-evenly">
                 <NavLink 
                     href="/" 
                     exact
