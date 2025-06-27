@@ -20,22 +20,23 @@ export default function Top_Bar(){
                 <NavLink 
                     href="/" 
                     exact
-                    className="font-semibold transition-all ease-in-out duration-[1s] hover:text-[#6078ff] [&.active]:text-red-600"
+                    className="font-semibold transition-all ease-in-out duration-[1s] hover:text-[#6078ff] [&.active]:text-shadow-md/60 [&.active]:text-shadow-[#444]"
                     >Home
                 </NavLink>
                 <NavLink 
                     href="/about-us" 
-                    className="font-semibold transition-all ease-in-out duration-[1s] hover:text-[#6078ff] [&.active]:text-red-600">
+                    className="font-semibold transition-all ease-in-out duration-[1s] hover:text-[#6078ff] [&.active]:text-shadow-md/60 [&.active]:text-shadow-[#444]">
                     About Us
                 </NavLink>
                 <NavLink 
                     href="/terms" 
-                    className="font-semibold transition-all ease-in-out duration-[1s] hover:text-[#6078ff] [&.active]:text-red-600"
+                    className="font-semibold transition-all ease-in-out duration-[1s] hover:text-[#6078ff] [&.active]:text-shadow-md/60 [&.active]:text-shadow-[#444]"
                     >Terms & Conditions
                 </NavLink>
                 <NavLink 
                     href="/contact-us" 
-                    className="font-semibold transition-all ease-in-out duration-[1s] hover:text-[#6078ff] [&.active]:text-red-600">Contact Us
+                    className="font-semibold transition-all ease-in-out duration-[1s] hover:text-[#6078ff] [&.active]:text-shadow-md/60 [&.active]:text-shadow-[#444]"
+                    >Contact Us
                 </NavLink>
             </div>
         </div>
