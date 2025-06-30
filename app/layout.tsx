@@ -4,6 +4,7 @@ import "./globals.css";
 import Top_Bar from "@/components/global/top-bar";
 import MainNav from "@/components/global/main-nav";
 import { Main } from "next/document";
+import BottomBar from "@/components/global/bottom-bar";
 
 const poppins = Poppins({
   subsets: ['latin'],
@@ -27,10 +28,15 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="flex flex-col justify-center">
-        <Top_Bar />
+      <body className="flex flex-col items-center">
+        <div className="flex justify-center bg-[var(--mainBGLight)] w-full">
+          <Top_Bar />
+        </div>
         <MainNav />
-        {children}
+        <div className="w-full bg-[var(--mainBGLight)] flex justify-center">
+          {children}
+        </div>
+        <BottomBar />
       </body>
     </html>
   );

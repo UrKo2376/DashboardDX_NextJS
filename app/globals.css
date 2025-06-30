@@ -4,6 +4,10 @@
   --background: #ffffff;
   --foreground: #171717;
   --topBarBackground: #AAAAAA;
+  --navDarker: #1a1a1a;
+  --navDark: #222222;
+  --mainBGLight: #dddddd;
+  --mainBGLighter: #eeeeee;
   --font-sans: var(--font-poppins), system-ui, sans-serif;
 }
 

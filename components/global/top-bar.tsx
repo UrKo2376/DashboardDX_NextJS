@@ -7,11 +7,10 @@ import NavLink from "@/lib/nav-link";
 
 const formattedDate = HeaderDate();
 
-
-export default function Top_Bar(){
+export default function Top_Bar() {
     const pathname = usePathname();
     return(
-        <div className="columns-2 h-10 bg-[var(--topBarBackground)] text-black">
+        <div className="columns-2 w-385 h-10 bg-[var(--mainBGLighter)] text-black">
             <div className="h-full flex items-center justify-start">
                 <h1 className="pl-4 font-semibold">{formattedDate}</h1>
             </div>

@@ -1,15 +1,48 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
-// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
-// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
-
 generator client {
   provider = "prisma-client-js"
-  output   = "../app/generated/prisma"
 }
 
 datasource db {
-  provider = "postgresql"
-  url      = env("DATABASE_URL")
+  provider = "mysql"
+  url      = env("DATABASE_URL") // Example: mysql://user:pass@host:port/dashboarddx
+}
+
+model User {
+  id           Int      @id @default(autoincrement())
+  accountId    Int
+  level        Int      @default(1)
+  username     String   @db.Text
+  password     String   @db.Text
+  fullName     String?  @map("full_name") @db.Text
+  primaryUser  Int      @default(0)
+  rateHour     Float    @default(0)
+  rateDay      Float    @default(0)
+
+  account      Account  @relation(fields: [accountId], references: [id])
+}
+
+model Account {
+  id           Int      @id
+  accountTitle String?  @map("account_title") @db.Text
+  status       String?  @db.Text
+  license      String?  @db.Text
+  extra1Label  String?  @map("extra1_label") @db.Text
+  extra2Label  String?  @map("extra2_label") @db.Text
+  extra3Label  String?  @map("extra3_label") @db.Text
+
+  users        User[]
+  boards       Board[]
+}
+
+model Board {
+  id          Int      @id
+  accountId   Int      @map("account")
+  type        Int      @default(0)
+  display     Int      @default(1)
+  title       String?  @db.Text
+  code        String?  @db.Text
+  url         String?  @db.Text
+  description String?  @db.Text
+
+  account     Account  @relation(fields: [accountId], references: [id])
 }
