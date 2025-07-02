@@ -27,7 +27,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className={poppins.variable}>
       <body className="flex flex-col items-center">
         <div className="flex justify-center bg-[var(--mainBGLight)] w-full">
           <Top_Bar />

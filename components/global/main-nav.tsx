@@ -13,7 +13,7 @@ export default function MainNav() {
   return (
     <div className="h-40 flex flex-row justify-between items-center w-385 bg-[var(--navDark)]">
       {/* Logo section */}
-      <div className="flex items-center w-2/5 bg-[var(--navDarker)] h-full pl-20">
+      <div className="flex items-center w-2/5 bg-[var(--navDarker)] h-full pl-4">
         <Link href="/">
             <Image
             src="/Images/Logo.png"
@@ -26,7 +26,7 @@ export default function MainNav() {
       </div>
 
       {/* Button section */}
-      <div className="flex items-center pr-20 w-3/5 h-full flex justify-end bg-[var(--navDarker)]">
+      <div className="flex items-center pr-20 w-3/5 h-full justify-end bg-[var(--navDarker)]">
         <button
           type="button"
           onClick={() => setIsSignedIn((prev) => !prev)}

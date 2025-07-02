@@ -23,3 +23,33 @@ body {
   color: var(--foreground);
   font-family: var(--font-sans);
 }
+
+.top-bar-menu {
+  @apply font-semibold transition-all ease-in-out duration-1000 hover:text-[#6078ff];
+}
+
+.top-bar-menu.active {
+  @apply text-shadow-md/60 text-shadow-[#444];
+}
+
+/* globals.css */
+
+.home-container {
+  @apply flex flex-col md:flex-row bg-[var(--mainBGLighter)] w-full max-w-[1545px] mx-auto;
+}
+
+.main-left {
+  @apply flex flex-col flex-1 p-4 items-start justify-center;
+}
+
+.main-heading {
+  @apply text-[6em] md:text-[5em] font-bold text-black uppercase;
+}
+
+.main-company-name {
+  @apply text-[1.5em] md:text-[1.5em] font-bold text-black uppercase;
+}
+
+.main-right {
+  @apply flex-1 flex justify-center items-center p-2;
+}
