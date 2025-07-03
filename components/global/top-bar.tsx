@@ -20,22 +20,22 @@ export default function Top_Bar() {
                     href="/" 
                     exact
                     //className="font-semibold transition-all ease-in-out duration-[1s] hover:text-[#6078ff] [&.active]:text-shadow-md/60 [&.active]:text-shadow-[#444]"
-                    className="top-bar-menu"
+                    className="menu-links"
                     >Home
                 </NavLink>
                 <NavLink 
                     href="/about-us" 
-                    className="top-bar-menu"
+                    className="menu-links"
                     >About Us
                 </NavLink>
                 <NavLink 
                     href="/terms" 
-                    className="top-bar-menu"
+                    className="menu-links"
                     >Terms & Conditions
                 </NavLink>
                 <NavLink 
                     href="/contact-us" 
-                    className="top-bar-menu"
+                    className="menu-links"
                     >Contact Us
                 </NavLink>
             </div>

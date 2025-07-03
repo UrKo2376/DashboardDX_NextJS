@@ -11,7 +11,7 @@ model User {
   id           Int      @id @default(autoincrement())
   accountId    Int
   level        Int      @default(1)
-  username     String   @db.Text
+  username     String   @unique
   password     String   @db.Text
   fullName     String?  @map("full_name") @db.Text
   primaryUser  Int      @default(0)

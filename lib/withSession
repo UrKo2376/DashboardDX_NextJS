@@ -1,0 +1,19 @@
+// lib/withSession.ts
+import { getIronSession, SessionOptions } from "iron-session";
+import type { SessionUser } from "./session";
+import { sessionOptions } from "./session";
+import type { NextRequest } from "next/server";
+
+export async function getSession(req: NextRequest) {
+  const session = await getIronSession<SessionUser>(
+    {
+      // Manually extract request headers and method
+      cookie: req.headers.get("cookie") || "",
+      headers: req.headers,
+      method: req.method,
+    },
+    sessionOptions
+  );
+
+  return session;
+}
