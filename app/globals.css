@@ -24,11 +24,11 @@ body {
   font-family: var(--font-sans);
 }
 
-.top-bar-menu {
+.main-nav {
   @apply font-semibold transition-all ease-in-out duration-1000 hover:text-[#6078ff];
 }
 
-.top-bar-menu.active {
+.main-nav.active {
   @apply text-shadow-md/60 text-shadow-[#444];
 }
 
