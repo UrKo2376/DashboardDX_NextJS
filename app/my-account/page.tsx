@@ -15,7 +15,12 @@ export default function Account() {
 
   return (
     <div className="home-container">
-      <h1 className="text-4xl text-black">Welcome {session.user?.name || session.user?.username}</h1>
+      <div className="main-left">
+        <h1 className="text-4xl text-black">Welcome {session.user?.name || session.user?.username}</h1>
+      </div>
+      <div className="main-right">
+        <p className="text-black">Account details go here</p>
+      </div>
     </div>
   );
 }

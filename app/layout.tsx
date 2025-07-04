@@ -6,6 +6,7 @@ import MainNav from "@/components/global/main-nav";
 import { Main } from "next/document";
 import BottomBar from "@/components/global/bottom-bar";
 import AuthSessionProvider from "@/components/global/AuthSessionProvider";
+import Breadcrumb from "@/components/Breadcrumbs/breadcrumb";
 
 
 const poppins = Poppins({
@@ -36,8 +37,9 @@ export default function RootLayout({
             <Top_Bar />
           </div>
           <MainNav />
+
           <div className="w-full bg-[var(--mainBGLight)] flex justify-center">
-            
+
             {children}
             
           </div>
