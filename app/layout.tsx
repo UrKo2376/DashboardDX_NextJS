@@ -5,6 +5,8 @@ import Top_Bar from "@/components/global/top-bar";
 import MainNav from "@/components/global/main-nav";
 import { Main } from "next/document";
 import BottomBar from "@/components/global/bottom-bar";
+import AuthSessionProvider from "@/components/global/AuthSessionProvider";
+
 
 const poppins = Poppins({
   subsets: ['latin'],
@@ -28,16 +30,20 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={poppins.variable}>
-      <body className="flex flex-col items-center">
-        <div className="flex justify-center bg-[var(--mainBGLight)] w-full">
-          <Top_Bar />
-        </div>
-        <MainNav />
-        <div className="w-full bg-[var(--mainBGLight)] flex justify-center">
-          {children}
-        </div>
-        <BottomBar />
-      </body>
+      <AuthSessionProvider><body className="flex flex-col items-center">
+        
+          <div className="flex justify-center bg-[var(--mainBGLight)] w-full">
+            <Top_Bar />
+          </div>
+          <MainNav />
+          <div className="w-full bg-[var(--mainBGLight)] flex justify-center">
+            
+            {children}
+            
+          </div>
+          <BottomBar />
+        
+      </body></AuthSessionProvider>
     </html>
   );
 }
