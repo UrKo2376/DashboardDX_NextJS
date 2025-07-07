@@ -8,6 +8,7 @@ declare module "next-auth" {
       username: string;
       level: number;
       accountId: number;
+      primaryUser: number;
     } & DefaultSession["user"];
   }
 
@@ -16,6 +17,7 @@ declare module "next-auth" {
     username: string;
     level: number;
     accountId: number;
+    primaryUser: number;
   }
 }
 
@@ -25,5 +27,6 @@ declare module "next-auth/jwt" {
     username: string;
     level: number;
     accountId: number;
+    primaryUser: number;
   }
 }

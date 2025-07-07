@@ -9,6 +9,7 @@
   --mainBGLight: #dddddd;
   --mainBGLighter: #eeeeee;
   --font-sans: var(--font-poppins), system-ui, sans-serif;
+  --accountBox: #cccccc;
 }
 
 @media (prefers-color-scheme: dark) {

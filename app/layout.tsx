@@ -31,14 +31,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={poppins.variable}>
-      <AuthSessionProvider><body className="flex flex-col items-center">
+      <AuthSessionProvider><body className="min-h-screen flex flex-col items-center">
         
           <div className="flex justify-center bg-[var(--mainBGLight)] w-full">
             <Top_Bar />
           </div>
           <MainNav />
 
-          <div className="w-full bg-[var(--mainBGLight)] flex justify-center">
+          <div className="w-full bg-[var(--mainBGLight)] flex justify-center flex-grow">
 
             {children}
             

@@ -4,22 +4,33 @@ import Link from "next/link";
 import NavLink from "@/lib/nav-link";
 import React, { useState, useEffect } from "react";
 import { signIn, signOut, useSession } from "next-auth/react";
+import { redirect } from "next/dist/server/api-utils";
+import { useRouter } from "next/navigation"; 
 
 export default function MainNav() {
-  const { data: session } = useSession();
+  const { data: session, status } = useSession();
+  const router = useRouter();
 
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
   const [errorMsg, setErrorMsg] = useState("");
 
-  useEffect(() => {
-    if (session) {
-      console.log("User signed in:", session.user);
-    } else {
-      console.log("User signed out");
-    }
-  }, [session]);
+
+
+useEffect(() => {
+  if (status === "loading") return; // do nothing while loading
+
+  if (status === "unauthenticated") {
+    console.log("User signed out");
+    const timer = setTimeout(() => router.push("/"), 5000);
+    return () => clearTimeout(timer); // cleanup timer on unmount or session change
+  }
+
+  if (status === "authenticated") {
+    console.log("User signed in:", session.user);
+  }
+}, [status, session, router]);
 
   const handleSignIn = async () => {
     setLoading(true);
@@ -37,6 +48,9 @@ export default function MainNav() {
     } else {
       // Clear password field on successful login
       setPassword("");
+      // Redirect to My Account on successful login
+      //setTimeout(()=> router.push("/my-account"), 1000)
+      router.push("/my-account")
     }
   };
 

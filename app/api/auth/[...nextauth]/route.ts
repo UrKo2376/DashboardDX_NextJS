@@ -16,7 +16,7 @@ export const authOptions: NextAuthOptions = {
         password: { label: "Password", type: "password" },
       },
       async authorize(credentials) {
-                console.log('authorize credentials:', credentials);
+        console.log('authorize credentials:', credentials);
         
         if (!credentials?.username || !credentials?.password) return null;
 
@@ -25,16 +25,14 @@ export const authOptions: NextAuthOptions = {
         });
 
         console.log('found user:', user);
-        console.log("Manual compare:", credentials.password === "M0nde02376");
-
-        
+        //console.log("Manual compare:", credentials.password === "M0nde02376");     
 
         if (!user) return null;
 
         const isValid = await bcrypt.compare(credentials.password, user.password);
         if (!isValid) return null;
 
-        console.log('password valid:', isValid);
+        //console.log('password valid:', isValid);
 
         // Return a user object compatible with NextAuth (id must be string)
         return {
@@ -43,6 +41,7 @@ export const authOptions: NextAuthOptions = {
           fullName: user.fullName,
           level: user.level,
           accountId: user.accountId,
+          primaryUser: user.primaryUser,
           name: user.fullName || null,
           email: null,
           image: null,
@@ -65,6 +64,7 @@ export const authOptions: NextAuthOptions = {
     token.username = user.username;
     token.level = user.level;
     token.accountId = user.accountId;
+    token.primaryUser = user.primaryUser;
   }
   return token;
 },
@@ -81,6 +81,7 @@ export const authOptions: NextAuthOptions = {
         session.user.username = token.username as string;
         session.user.level = token.level as number;
         session.user.accountId = token.accountId as number;
+        session.user.primaryUser = token.primaryUser as number;
       }
       return session;
     },
