@@ -16,6 +16,8 @@ export default function MainNav() {
   const [loading, setLoading] = useState(false);
   const [errorMsg, setErrorMsg] = useState("");
 
+  const [showPassword, setShowPassword] = useState(false);
+
 
 
 useEffect(() => {
@@ -102,7 +104,7 @@ useEffect(() => {
         )}
 
         {!session && (
-          <div className="flex items-center space-x-2 w-4/5 justify-end py-4">
+          <div className="flex items-center space-x-2 w-full justify-end py-4">
             <input
               type="text"
               placeholder="Username"
@@ -111,12 +113,20 @@ useEffect(() => {
               className="h-10 rounded-sm px-3 text-white border-white border-1"
             />
             <input
-              type="password"
+              type={showPassword ? "text" : "password"}
               placeholder="Password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               className="h-10 rounded-sm px-3 text-white border-white border-1"
             />
+            <label className="text-white text-sm flex items-center space-x-1">
+              <input
+                type="checkbox"
+                checked={showPassword}
+                onChange={() => setShowPassword((prev) => !prev)}
+              />
+              <span>Show Password</span>
+            </label>            
             <button
               type="button"
               disabled={loading}
