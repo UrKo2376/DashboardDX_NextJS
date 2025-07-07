@@ -4,7 +4,7 @@ import Link from "next/link";
 import NavLink from "@/lib/nav-link";
 import React, { useState, useEffect } from "react";
 import { signIn, signOut, useSession } from "next-auth/react";
-import { redirect } from "next/dist/server/api-utils";
+
 import { useRouter } from "next/navigation"; 
 
 export default function MainNav() {
@@ -48,7 +48,6 @@ useEffect(() => {
     } else {
       // Clear password field on successful login
       setPassword("");
-      // Redirect to My Account on successful login
       //setTimeout(()=> router.push("/my-account"), 1000)
       router.push("/my-account")
     }

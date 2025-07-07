@@ -76,7 +76,7 @@ const [countdown, setCountdown] = useState(5);
       userLevel = "User (Limited Access)";
       break;
     default:
-      userLevel = "No User Level - Contact You're Admin"
+      userLevel = "No User Level - Please Contact You're Admin"
       break;
   }
 
