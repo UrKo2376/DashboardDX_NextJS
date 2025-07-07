@@ -4,6 +4,8 @@ import Link from "next/link";
 import NavLink from "@/lib/nav-link";
 import React, { useState, useEffect } from "react";
 import { signIn, signOut, useSession } from "next-auth/react";
+import { EyeIcon, EyeSlashIcon } from "@heroicons/react/24/solid";
+
 
 import { useRouter } from "next/navigation"; 
 
@@ -112,21 +114,27 @@ useEffect(() => {
               onChange={(e) => setUsername(e.target.value)}
               className="h-10 rounded-sm px-3 text-white border-white border-1"
             />
-            <input
-              type={showPassword ? "text" : "password"}
-              placeholder="Password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              className="h-10 rounded-sm px-3 text-white border-white border-1"
-            />
-            <label className="text-white text-sm flex items-center space-x-1">
+            <div className="relative">
               <input
-                type="checkbox"
-                checked={showPassword}
-                onChange={() => setShowPassword((prev) => !prev)}
+                type={showPassword ? "text" : "password"}
+                placeholder="Password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                className="h-10 rounded-sm px-3 pr-10 text-white border-white border-1 w-full bg-transparent"
               />
-              <span>Show Password</span>
-            </label>            
+              <button
+                type="button"
+                onClick={() => setShowPassword((prev) => !prev)}
+                className="absolute inset-y-0 right-2 flex items-center text-white hover:text-indigo-400 transition-colors duration-300"
+                tabIndex={-1}
+              >
+                {showPassword ? (
+                  <EyeIcon className="h-5 w-5 transition-transform duration-300 rotate-0 scale-100" />
+                ) : (
+                  <EyeSlashIcon className="h-5 w-5 transition-transform duration-300 rotate-0 scale-100" />
+                )}
+              </button>
+            </div>    
             <button
               type="button"
               disabled={loading}
@@ -136,6 +144,7 @@ useEffect(() => {
               {loading ? "Signing In..." : "Sign In"}
             </button>
           </div>
+          
         )}
         {errorMsg && (
           <p className="text-red-500 text-sm mt-1 w-4/5 text-right">{errorMsg}</p>
