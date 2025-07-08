@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from "react";
+import { useEffect, useState } from 'react';
 
 interface UserAvatarProps {
   accountId: number;
@@ -17,24 +17,30 @@ export default function UserAvatar({
   className = '',
   alt = 'User avatar',
 }: UserAvatarProps) {
-  const [imageSrc, setImageSrc] = useState("/images/user_images/user.png");
+  const [imageSrc, setImageSrc] = useState('/images/user_images/user.png');
 
   useEffect(() => {
-    const fileName = `user_${accountId}_${userId}.jpg`;
-    const imagePath = `/images/user_images/${fileName}`;
-    fetch(imagePath, { method: "HEAD" }).then((res) => {
-      if (res.ok) {
-        setImageSrc(imagePath);
+    async function checkImage() {
+      try {
+        const res = await fetch(`/api/getAvatar/?accountId=${accountId}&userId=${userId}`);
+        if (res.ok) {
+          const data = await res.json();
+          setImageSrc(data.imageUrl);
+        }
+      } catch (err) {
+        // fallback image is already set by default
       }
-    });
+    }
+
+    checkImage();
   }, [accountId, userId]);
 
   return (
     <img
       src={imageSrc}
       alt={alt}
-      className={`rounded-xl object-cover border border-gray-300 ${className}`}
-      style={{ width: size, height: size }}
+      style={{ width: size, height: size, objectFit: 'cover' }}
+      className={`rounded-xl border border-gray-300 ${className}`}
     />
   );
 }
