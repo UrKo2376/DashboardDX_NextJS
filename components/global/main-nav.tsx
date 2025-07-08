@@ -5,7 +5,7 @@ import NavLink from "@/lib/nav-link";
 import React, { useState, useEffect } from "react";
 import { signIn, signOut, useSession } from "next-auth/react";
 import { EyeIcon, EyeSlashIcon } from "@heroicons/react/24/solid";
-
+import UserAvatar from "./userAvatar";
 
 import { useRouter } from "next/navigation"; 
 
@@ -27,7 +27,7 @@ useEffect(() => {
 
   if (status === "unauthenticated") {
     console.log("User signed out");
-    const timer = setTimeout(() => router.push("/"), 5000);
+    const timer = setTimeout(() => router.push("/"), 3000);
     return () => clearTimeout(timer); // cleanup timer on unmount or session change
   }
 
@@ -93,7 +93,21 @@ useEffect(() => {
                 Help & FAQ
               </NavLink>
             </div>
-            <div className="flex w-4/5 justify-end py-4">
+            <div className="flex w-4/5 justify-end items-center py-4">
+              <div className="flex items-center px-4">
+                <div className="flex flex-col items-center justify-center">
+                  <h3 className="text-xs">Signed In User</h3>
+                  <p className="text-xl">{session.user.name}</p>
+                </div>
+                <div className="px-4">
+                  <UserAvatar
+                    accountId={session.user.accountId}
+                    userId={session.user.id}
+                    size={50}
+                    className="shadow-lg"
+                  />
+                </div>
+              </div>
               <button
                 type="button"
                 onClick={() => signOut()}
@@ -102,6 +116,7 @@ useEffect(() => {
                 Sign Out
               </button>
             </div>
+
           </>
         )}
 

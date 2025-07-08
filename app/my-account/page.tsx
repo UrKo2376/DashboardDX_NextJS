@@ -22,7 +22,7 @@ export default function Account() {
 };
 
 const [account, setAccount] = useState<AccountType | null>(null);
-const [countdown, setCountdown] = useState(5);
+const [countdown, setCountdown] = useState(3);
   useEffect(() => {
     const interval = setInterval(() => {
       setCountdown((prev) => prev - 1);

@@ -16,7 +16,7 @@ export const authOptions: NextAuthOptions = {
         password: { label: "Password", type: "password" },
       },
       async authorize(credentials) {
-        console.log('authorize credentials:', credentials);
+        //console.log('authorize credentials:', credentials);
         
         if (!credentials?.username || !credentials?.password) return null;
 
@@ -24,7 +24,7 @@ export const authOptions: NextAuthOptions = {
           where: { username: credentials.username },
         });
 
-        console.log('found user:', user);
+        //console.log('found user:', user);
         //console.log("Manual compare:", credentials.password === "M0nde02376");     
 
         if (!user) return null;
