@@ -4,7 +4,7 @@ import React from 'react';
 
 const TermsAndConditions = () => {
   return (
-    <div className="max-w-5xl mx-auto px-4 py-10 text-black">
+    <div className="w-full max-w-[1545px] mx-auto px-4 py-10 text-black bg-[var(--mainBGLighter)]" >
       <h1 className="text-4xl font-semibold mb-8">Terms &amp; Conditions</h1>
 
       <section className="space-y-6 text-base leading-7">

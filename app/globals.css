@@ -10,12 +10,15 @@
   --mainBGLighter: #eeeeee;
   --font-sans: var(--font-poppins), system-ui, sans-serif;
   --accountBox: #cccccc;
+  --orangeBorder: #ff9900;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;
     --foreground: #ededed;
+    --orangeBorder: #ff9900;
+    --navDark: #222222;
   }
 }
 

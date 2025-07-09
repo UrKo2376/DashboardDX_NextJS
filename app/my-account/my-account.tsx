@@ -151,9 +151,44 @@ export default function AccountClient() {
       <div className="home-container text-black">
         <div className="main-left !justify-start">
           <h2 className="text-4xl py-4">Account Setting</h2>
+          <div className="border-l-4 border-l-[var(--orangeBorder)] pl-4 pr-20 w-full shrink-0">
+            <form>
+              <label htmlFor="extraLabel1" className="block">Extra 1 Label</label>
+              <input 
+                id="extraLabel1"
+                name="extraLabel1"
+                type="text"
+                placeholder="Extra 1 (Change In Account)"
+                className="block shrink-0 w-full border-1 border-gray-400 p-2 my-2 rounded-xl"
+              />
+              <label htmlFor="extraLabel2" className="block">Extra 2 Label</label>
+              <input 
+                id="extraLabel2"
+                name="extraLabel2"
+                type="text"
+                placeholder="Extra 2 (Change In Account)"
+                className="block shrink-0 w-full border-1 border-gray-400 p-2 my-2 rounded-xl"
+              />    
+              <label htmlFor="extraLabel3" className="block">Extra 3 Label</label>
+              <input 
+                id="extraLabel3"
+                name="extraLabel3"
+                type="text"
+                placeholder="Extra 3 (Change In Account)"
+                className="block shrink-0 w-full border-1 border-gray-400 p-2 my-2 rounded-xl"
+              />  
+              <button
+                type="button"
+                className="uppercase transition-all ease-in-out duration-[1s] h-10 rounded-sm bg-[#6078ff] px-4 my-4 text-l font-semibold text-white shadow-xs hover:bg-indigo-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+              >
+                Update Labels
+              </button>                       
+            </form>
+          </div>
         </div>
-        <div className="main-right !items-start !justify-start">
-          <h2 className="text-4xl p-4">Admin Log</h2>
+        <div className="main-right !items-start !justify-start !flex-col">
+          <h2 className="text-4xl py-4">Admin Log</h2>       
+          ADMIN COMPONENT GOES HERE
         </div>
       </div>
     </div>
