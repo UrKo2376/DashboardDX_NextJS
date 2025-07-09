@@ -59,6 +59,15 @@ export default function AccountClient() {
     return () => clearInterval(interval);
   }, [countdown]);
 
+  useEffect(() => {
+    if (account) {
+      if (account.extra1Label?.trim()) setExtraLabel1(account.extra1Label);
+      if (account.extra2Label?.trim()) setExtraLabel2(account.extra2Label);
+      if (account.extra3Label?.trim()) setExtraLabel3(account.extra3Label);
+    }
+  }, [account]);
+
+
   const handleUpdateLabels = async () => {
     if (!account?.id) {
       setUpdateMsg('Account not loaded.');
