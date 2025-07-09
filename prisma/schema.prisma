@@ -4,45 +4,69 @@ generator client {
 
 datasource db {
   provider = "mysql"
-  url      = env("DATABASE_URL") // Example: mysql://user:pass@host:port/dashboarddx
+  url      = env("DATABASE_URL")
 }
 
 model User {
-  id           Int      @id @default(autoincrement())
-  accountId    Int
-  level        Int      @default(1)
-  username     String   @unique
-  password     String   @db.Text
-  fullName     String?  @map("full_name") @db.Text
-  primaryUser  Int      @default(0)
-  rateHour     Float    @default(0)
-  rateDay      Float    @default(0)
+  id          Int     @id @default(autoincrement())
+  accountId   Int
+  level       Int     @default(1)
+  username    String  @unique
+  password    String  @db.Text
+  fullName    String? @map("full_name") @db.Text
+  primaryUser Int     @default(0)
+  rateHour    Float   @default(0)
+  rateDay     Float   @default(0)
+  account     Account @relation(fields: [accountId], references: [id])
 
-  account      Account  @relation(fields: [accountId], references: [id])
+  @@index([accountId], map: "User_accountId_fkey")
 }
 
 model Account {
-  id           Int      @id
-  accountTitle String?  @map("account_title") @db.Text
-  status       String?  @db.Text
-  license      String?  @db.Text
-  extra1Label  String?  @map("extra1_label") @db.Text
-  extra2Label  String?  @map("extra2_label") @db.Text
-  extra3Label  String?  @map("extra3_label") @db.Text
-
-  users        User[]
+  id           Int     @id
+  accountTitle String? @map("account_title") @db.Text
+  status       String? @db.Text
+  license      String? @db.Text
+  extra1Label  String? @map("extra1_label") @db.Text
+  extra2Label  String? @map("extra2_label") @db.Text
+  extra3Label  String? @map("extra3_label") @db.Text
   boards       Board[]
+  users        User[]
 }
 
 model Board {
-  id          Int      @id
-  accountId   Int      @map("account")
-  type        Int      @default(0)
-  display     Int      @default(1)
-  title       String?  @db.Text
-  code        String?  @db.Text
-  url         String?  @db.Text
-  description String?  @db.Text
+  id          Int     @id
+  accountId   Int     @map("account")
+  type        Int     @default(0)
+  display     Int     @default(1)
+  title       String? @db.Text
+  code        String? @db.Text
+  url         String? @db.Text
+  description String? @db.Text
+  account     Account @relation(fields: [accountId], references: [id])
 
-  account     Account  @relation(fields: [accountId], references: [id])
+  @@index([accountId], map: "Board_account_fkey")
+}
+
+model Feedback {
+  id                   Int       @id
+  date_of_job          DateTime
+  company_name         String    @db.VarChar(255)
+  raised_by            String    @db.VarChar(50)
+  contact_number       String    @db.VarChar(20)
+  email                String    @db.VarChar(255)
+  feedback_description String    @db.Text
+  company_id           String    @db.VarChar(50)
+  raised_on            DateTime
+  updated_by           String    @db.VarChar(50)
+  updated_on           DateTime?  // Nullable
+  status               Status    @default(Outstanding)
+
+  @@map("feedback")
+}
+
+enum Status {
+  Outstanding
+  Being_Worked @map("Being Worked")
+  Complete
 }

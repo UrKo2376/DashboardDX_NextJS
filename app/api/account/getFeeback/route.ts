@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { getServerSession } from "next-auth";
-import { authOptions } from "../auth/[...nextauth]/route";
+import { authOptions } from "../../auth/[...nextauth]/route";
 import { prisma } from '@/lib/prisma'; 
 
 export async function GET(req: NextRequest) {
@@ -11,18 +11,13 @@ export async function GET(req: NextRequest) {
   }
 
   try {
-      
-    const account = await prisma.account.findUnique({
-      where: { id: session.user.accountId },
+    const feedback = await prisma.feedback.findMany({
+      where: { company_id: String(session.user.accountId) },
     });
 
-    if (!account) {
-      return NextResponse.json({ error: "Account not found" }, { status: 404 });
-    }
-
-    return NextResponse.json(account);
+    return NextResponse.json(feedback);
   } catch (error) {
-    console.error("Error fetching account:", error);
+    console.error("Error fetching feedback:", error);
     return NextResponse.json({ error: "Internal server error" }, { status: 500 });
   }
 }

@@ -1,6 +1,6 @@
 // app/api/account/updateLabels/route.ts
 import { NextResponse } from 'next/server';
-import { prisma } from '@/lib/prisma'; // ✅ shared instance
+import { prisma } from '@/lib/prisma';
 
 export async function POST(req: Request) {
   try {
@@ -12,7 +12,7 @@ export async function POST(req: Request) {
     }
 
     const updateData: Record<string, string> = {};
-    if (extraLabel1?.trim()) updateData.extra1Label = extraLabel1.trim(); // ✅ lowercase
+    if (extraLabel1?.trim()) updateData.extra1Label = extraLabel1.trim();
     if (extraLabel2?.trim()) updateData.extra2Label = extraLabel2.trim();
     if (extraLabel3?.trim()) updateData.extra3Label = extraLabel3.trim();
 
