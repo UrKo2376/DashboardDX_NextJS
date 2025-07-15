@@ -57,6 +57,12 @@ useEffect(() => {
     }
   };
 
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if(e.key == 'Enter'){
+      handleSignIn();
+    }
+  };
+
   return (
     <div className="h-40 flex flex-row justify-between items-center w-385 bg-[var(--navDark)]">
       {/* Logo section */}
@@ -135,6 +141,7 @@ useEffect(() => {
                 placeholder="Password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
+                onKeyDown={(e) => { handleKeyDown(e) }}
                 className="h-10 rounded-sm px-3 pr-10 text-white border-white border-1 w-full bg-transparent"
               />
               <button
