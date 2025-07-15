@@ -27,8 +27,10 @@ useEffect(() => {
 
   if (status === "unauthenticated") {
     console.log("User signed out");
-    const timer = setTimeout(() => router.push("/"), 3000);
-    return () => clearTimeout(timer); // cleanup timer on unmount or session change
+    // Set time out code to render the sign out after 3 seconds
+    //const timer = setTimeout(() => router.push("/"), 3000);
+    //return () => clearTimeout(timer); // cleanup timer on unmount or session change
+    router.push("/");
   }
 
   if (status === "authenticated") {
