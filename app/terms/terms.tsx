@@ -1,11 +1,13 @@
 'use client';
 
 import React from 'react';
+import Breadcrumb from '@/components/Breadcrumbs/breadcrumb';
 
 const TermsAndConditions = () => {
   return (
-    <div className="w-full max-w-[1545px] mx-auto px-4 py-10 text-black bg-[var(--mainBGLighter)]" >
-      <h1 className="text-4xl font-semibold mb-8">Terms &amp; Conditions</h1>
+    <div className="w-full max-w-[1545px] mx-auto p-4 text-black bg-[var(--mainBGLighter)]" >
+      <Breadcrumb />
+      <h1 className="text-4xl font-semibold my-8">Terms &amp; Conditions</h1>
 
       <section className="space-y-6 text-base leading-7">
         <div>
